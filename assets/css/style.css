@@ -1576,6 +1576,18 @@ html{
         CONTACT FORM
 ======================================*/
 
+.contact-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    align-items:start;
+
+}
+
 .contact-form{
 
     background:rgba(30,41,59,.55);
