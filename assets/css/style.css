@@ -1768,3 +1768,43 @@ html{
     margin-bottom:30px;
 
 }
+
+.contact-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.contact-title-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:30px;
+
+    color:#F8FAFC;
+
+    margin-bottom:10px;
+
+}
+
+.contact-title-left i{
+
+    color:#3B82F6;
+
+}
+
+.contact-subtitle-left{
+
+    color:#94A3B8;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
