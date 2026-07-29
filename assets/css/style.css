@@ -1571,29 +1571,30 @@ html{
 
 }
 
-
 /*=====================================
-        CONTACT FORM
+        CONTACT SECTION
 ======================================*/
 
-.contact-container{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:60px;
-
-    align-items:start;
-
+.contact{
+    padding:100px 10%;
 }
 
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:stretch;
+}
+
+/*=====================================
+        LEFT & RIGHT CARDS
+======================================*/
+
+.contact-info,
 .contact-form{
 
     background:rgba(30,41,59,.55);
-
     backdrop-filter:blur(18px);
-
     -webkit-backdrop-filter:blur(18px);
 
     padding:35px;
@@ -1603,8 +1604,118 @@ html{
     border:1px solid rgba(255,255,255,.08);
 
     box-shadow:0 20px 40px rgba(0,0,0,.25);
-
 }
+
+/*=====================================
+        HEADINGS
+======================================*/
+
+.contact-title-left,
+.contact-title{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-size:32px;
+    font-weight:700;
+
+    color:#F8FAFC;
+
+    margin-bottom:15px;
+}
+
+.contact-title-left i,
+.contact-title i{
+
+    color:#3B82F6;
+    font-size:28px;
+}
+
+.contact-subtitle-left,
+.contact-subtitle{
+
+    color:#94A3B8;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+    font-size:15px;
+}
+
+/*=====================================
+        CONTACT INFO
+======================================*/
+
+.info-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+    margin-bottom:28px;
+}
+
+.info-item i{
+
+    width:45px;
+    height:45px;
+
+    background:#2563EB;
+
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:18px;
+
+    flex-shrink:0;
+}
+
+.info-item strong{
+
+    display:block;
+
+    color:white;
+
+    margin-bottom:6px;
+}
+
+.info-item p{
+
+    color:#CBD5E1;
+
+    margin:2px 0;
+
+    line-height:1.6;
+}
+
+.info-item a{
+
+    color:#10B981;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.info-item a:hover{
+
+    color:#3B82F6;
+}
+
+/*=====================================
+        FORM
+======================================*/
 
 .contact-form form{
 
@@ -1613,10 +1724,9 @@ html{
     flex-direction:column;
 
     gap:20px;
-
 }
 
-/* Input & Textarea */
+/* Inputs */
 
 .contact-form input,
 .contact-form textarea{
@@ -1625,9 +1735,9 @@ html{
 
     padding:18px 20px;
 
-    border:2px solid transparent;
-
     border-radius:12px;
+
+    border:2px solid transparent;
 
     background:#1E293B;
 
@@ -1635,10 +1745,7 @@ html{
 
     font-size:16px;
 
-    font-family:'Inter',sans-serif;
-
     transition:.35s;
-
 }
 
 .contact-form textarea{
@@ -1646,19 +1753,19 @@ html{
     min-height:170px;
 
     resize:none;
-
 }
-
-/* Placeholder */
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder{
 
     color:#94A3B8;
-
 }
 
-/* Focus */
+.contact-form input:hover,
+.contact-form textarea:hover{
+
+    border-color:#3B82F6;
+}
 
 .contact-form input:focus,
 .contact-form textarea:focus{
@@ -1670,19 +1777,11 @@ html{
     background:#263548;
 
     box-shadow:0 0 20px rgba(59,130,246,.25);
-
 }
 
-/* Hover */
-
-.contact-form input:hover,
-.contact-form textarea:hover{
-
-    border-color:rgba(59,130,246,.4);
-
-}
-
-/* Button */
+/*=====================================
+        BUTTON
+======================================*/
 
 .contact-form button{
 
@@ -1705,7 +1804,6 @@ html{
     cursor:pointer;
 
     transition:.35s;
-
 }
 
 .contact-form button:hover{
@@ -1713,110 +1811,33 @@ html{
     transform:translateY(-4px);
 
     box-shadow:0 15px 35px rgba(59,130,246,.35);
-
-}
-.contact-title{
-
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    font-size:30px;
-    color:#F8FAFC;
-
-    margin-bottom:10px;
-
 }
 
-.contact-title i{
+.contact-form button i{
 
-    color:#3B82F6;
-
+    margin-right:8px;
 }
 
-.contact-subtitle{
+/*=====================================
+        RESPONSIVE
+======================================*/
 
-    color:#94A3B8;
-    line-height:1.8;
+@media(max-width:900px){
 
-    margin-bottom:30px;
+    .contact-container{
 
-}
-/*=========================
-      CONTACT HEADINGS
-==========================*/
+        grid-template-columns:1fr;
+    }
 
-.contact-title-left,
-.contact-title{
+    .contact-info,
+    .contact-form{
 
-    color:#3B82F6;
+        padding:30px;
+    }
 
-    font-size:32px;
+    .contact-title-left,
+    .contact-title{
 
-    margin-bottom:12px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-.contact-title-left i,
-.contact-title i{
-
-    color:#3B82F6;
-
-}
-
-.contact-subtitle-left,
-.contact-subtitle{
-
-    color:#94A3B8;
-
-    line-height:1.8;
-
-    margin-bottom:30px;
-
-}
-
-.contact-info{
-
-    display:flex;
-
-    flex-direction:column;
-
-}
-
-.contact-title-left{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    font-size:30px;
-
-    color:#F8FAFC;
-
-    margin-bottom:10px;
-
-}
-
-.contact-title-left i{
-
-    color:#3B82F6;
-
-}
-
-.contact-subtitle-left{
-
-    color:#94A3B8;
-
-    line-height:1.8;
-
-    margin-bottom:30px;
-
+        font-size:28px;
+    }
 }
