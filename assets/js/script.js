@@ -107,3 +107,34 @@ window.addEventListener("scroll", () => {
     });
 
 });
+
+
+const form = document.getElementById("contact-form");
+
+if (form) {
+
+    form.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        emailjs.sendForm(
+            "service_j72mpjw",
+            "template_ufgiru6",
+            this
+        )
+        .then(() => {
+
+            alert("✅ Message sent successfully!");
+            form.reset();
+
+        })
+        .catch((error) => {
+
+            console.error(error);
+            alert("❌ Failed to send message.");
+
+        });
+
+    });
+
+}
