@@ -1730,3 +1730,41 @@ html{
     margin-bottom:30px;
 
 }
+/*=========================
+      CONTACT HEADINGS
+==========================*/
+
+.contact-title-left,
+.contact-title{
+
+    color:#3B82F6;
+
+    font-size:32px;
+
+    margin-bottom:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.contact-title-left i,
+.contact-title i{
+
+    color:#3B82F6;
+
+}
+
+.contact-subtitle-left,
+.contact-subtitle{
+
+    color:#94A3B8;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
