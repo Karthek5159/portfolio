@@ -1,0 +1,239 @@
+/* ==========================================
+   RESPONSIVE DESIGN
+   Author : Karthek
+========================================== */
+
+
+/* ===============================
+   Large Laptop (1200px)
+================================= */
+
+@media (max-width:1200px){
+
+    section{
+        padding:90px 8%;
+    }
+
+    .hero{
+        gap:40px;
+    }
+
+    .hero-left h1{
+        font-size:58px;
+    }
+
+    .profile-circle{
+        width:360px;
+        height:360px;
+    }
+
+}
+
+
+/* ===============================
+   Tablet (992px)
+================================= */
+
+@media (max-width:992px){
+
+    section{
+        padding:80px 7%;
+    }
+
+    .hero,
+    .about{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-left,
+    .hero-right,
+    .about-image,
+    .about-content{
+        width:100%;
+    }
+
+    .hero-buttons,
+    .social-icons{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .profile-circle{
+        width:320px;
+        height:320px;
+        margin:auto;
+    }
+
+    .about{
+        gap:50px;
+    }
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+    .project-container,
+    .skills-container,
+    .services-container,
+    .certificate-container,
+    .achievement-container,
+    .tech-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+
+/* ===============================
+   Mobile (768px)
+================================= */
+
+@media (max-width:768px){
+
+    .navbar{
+        padding:18px 7%;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .hero{
+        min-height:auto;
+        padding-top:130px;
+    }
+
+    .hero-left h1{
+        font-size:44px;
+    }
+
+    #typing-text{
+        font-size:24px;
+    }
+
+    .profile-circle{
+        width:280px;
+        height:280px;
+    }
+
+    h2{
+        font-size:32px !important;
+    }
+
+    .project-container,
+    .skills-container,
+    .services-container,
+    .certificate-container,
+    .achievement-container,
+    .tech-grid{
+        grid-template-columns:1fr;
+    }
+
+    .timeline-item{
+        padding-left:55px;
+    }
+
+    .timeline::before{
+        left:15px;
+    }
+
+    .circle{
+        left:3px;
+    }
+
+    .footer-links{
+        gap:18px;
+    }
+
+}
+
+
+/* ===============================
+   Small Mobile (576px)
+================================= */
+
+@media (max-width:576px){
+
+    section{
+        padding:70px 6%;
+    }
+
+    .hero-left h1{
+        font-size:36px;
+    }
+
+    .hero-left p{
+        font-size:15px;
+    }
+
+    .profile-circle{
+        width:240px;
+        height:240px;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+        width:100%;
+        display:block;
+        margin-bottom:15px;
+        text-align:center;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .contact-info,
+    .contact-form{
+        padding:25px;
+    }
+
+    .contact-title,
+    .contact-title-left{
+        font-size:26px;
+    }
+
+    .info-item{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+
+/* ===============================
+   Extra Small Mobile (400px)
+================================= */
+
+@media (max-width:400px){
+
+    .hero-left h1{
+        font-size:30px;
+    }
+
+    #typing-text{
+        font-size:20px;
+    }
+
+    .profile-circle{
+        width:200px;
+        height:200px;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    .footer-social{
+        gap:12px;
+    }
+
+    .footer-social a{
+        width:42px;
+        height:42px;
+        font-size:18px;
+    }
+
+}
