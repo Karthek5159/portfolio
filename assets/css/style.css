@@ -1703,3 +1703,30 @@ html{
     box-shadow:0 15px 35px rgba(59,130,246,.35);
 
 }
+.contact-title{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-size:30px;
+    color:#F8FAFC;
+
+    margin-bottom:10px;
+
+}
+
+.contact-title i{
+
+    color:#3B82F6;
+
+}
+
+.contact-subtitle{
+
+    color:#94A3B8;
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
