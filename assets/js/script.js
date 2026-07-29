@@ -118,7 +118,7 @@ if (form) {
         e.preventDefault();
 
         emailjs.sendForm(
-            "service_j72mpjw",
+            "service_fejgvl3",
             "template_ufgiru6",
             this
         )
