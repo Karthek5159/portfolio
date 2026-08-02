@@ -125,12 +125,17 @@ form.addEventListener("submit", function (e) {
         form.reset();
 
     })
-    .catch((error) => {
+  .catch((error) => {
 
-        console.error(error);
-        alert("❌ Failed to send message.");
+    console.log(error);
 
-    });
+    alert(
+        error.status +
+        "\n" +
+        error.text
+    );
+
+});
 
 });
 
