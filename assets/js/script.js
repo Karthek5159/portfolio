@@ -108,33 +108,95 @@ window.addEventListener("scroll", () => {
 
 });
 
-
 const form = document.getElementById("contact-form");
 
-if (form) {
+form.addEventListener("submit", function (e) {
 
-    form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        e.preventDefault();
+    emailjs.sendForm(
+        "service_j72mpjw",
+        "template_ufgiru6",
+        this
+    )
+    .then(() => {
 
-        emailjs.sendForm(
-            "service_fejgvl3",
-            "template_ufgiru6",
-            this
-        )
-        .then(() => {
+        alert("✅ Message sent successfully!");
+        form.reset();
 
-            alert("✅ Message sent successfully!");
-            form.reset();
+    })
+    .catch((error) => {
 
-        })
-        .catch((error) => {
-
-            console.error(error);
-            alert("❌ Failed to send message.");
-
-        });
+        console.error(error);
+        alert("❌ Failed to send message.");
 
     });
 
+});
+
+function openCertificate(image){
+
+    document.getElementById("certificateImage").src = image;
+    document.getElementById("certificateModal").style.display = "flex";
+
 }
+
+function closeCertificate(){
+
+    document.getElementById("certificateModal").style.display = "none";
+
+}
+
+window.onclick = function(event){
+
+    const modal = document.getElementById("certificateModal");
+
+    if(event.target === modal){
+
+        closeCertificate();
+
+    }
+
+}
+
+const counters=document.querySelectorAll(".counter");
+
+const speed=150;
+
+counters.forEach(counter=>{
+
+    const update=()=>{
+
+        const target=+counter.dataset.target;
+
+        const count=+counter.innerText;
+
+        const increment=Math.ceil(target/speed);
+
+        if(count<target){
+
+            counter.innerText=count+increment;
+
+            setTimeout(update,15);
+
+        }else{
+
+            counter.innerText=target;
+
+        }
+
+    };
+
+    update();
+
+});
+
+
+fetch("https://api.countapi.xyz/hit/karthek-portfolio/visits")
+.then(res=>res.json())
+.then(data=>{
+
+    document.getElementById("visitor-count").innerHTML=
+        data.value.toLocaleString();
+
+});
