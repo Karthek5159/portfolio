@@ -1,4 +1,12 @@
 // =========================
+// EmailJS Initialization
+// =========================
+
+emailjs.init({
+    publicKey: "1eBh6Tm_gxmLE9Th2"
+});
+
+// =========================
 // Typing Animation
 // =========================
 
@@ -12,7 +20,6 @@ const textArray = [
 
 let index = 0;
 let charIndex = 0;
-let currentText = "";
 let isDeleting = false;
 
 function typeEffect() {
@@ -21,12 +28,13 @@ function typeEffect() {
 
     if (!typing) return;
 
+    const currentText = textArray[index];
+
     if (!isDeleting) {
 
-        currentText = textArray[index].substring(0, charIndex++);
-        typing.textContent = currentText;
-
-        if (charIndex > textArray[index].length) {
+        typing.textContent = currentText.substring(0, charIndex++);
+        
+        if (charIndex > currentText.length) {
             isDeleting = true;
             setTimeout(typeEffect, 1200);
             return;
@@ -34,20 +42,20 @@ function typeEffect() {
 
     } else {
 
-        currentText = textArray[index].substring(0, charIndex--);
-        typing.textContent = currentText;
+        typing.textContent = currentText.substring(0, charIndex--);
 
         if (charIndex < 0) {
             isDeleting = false;
             index = (index + 1) % textArray.length;
         }
+
     }
 
     setTimeout(typeEffect, isDeleting ? 40 : 80);
+
 }
 
-typeEffect();
-
+window.addEventListener("DOMContentLoaded", typeEffect);
 
 // =========================
 // Mobile Navigation
@@ -56,12 +64,15 @@ typeEffect();
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
-menuToggle.addEventListener("click", () => {
+if (menuToggle && navLinks) {
 
-    navLinks.classList.toggle("active");
+    menuToggle.addEventListener("click", () => {
 
-});
+        navLinks.classList.toggle("active");
 
+    });
+
+}
 
 // =========================
 // Smart Navbar
@@ -73,14 +84,16 @@ const navItems = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
 
-    // Navbar background
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
+    if (navbar) {
+
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+
     }
 
-    // Active menu
     let current = "";
 
     sections.forEach(section => {
@@ -88,9 +101,10 @@ window.addEventListener("scroll", () => {
         const sectionTop = section.offsetTop - 120;
         const sectionHeight = section.offsetHeight;
 
-        if (window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight) {
-
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight
+        ) {
             current = section.getAttribute("id");
         }
 
@@ -108,85 +122,140 @@ window.addEventListener("scroll", () => {
 
 });
 
+// Close menu after clicking link
+
+navItems.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        if (navLinks) {
+            navLinks.classList.remove("active");
+        }
+
+    });
+
+});
+
+// =========================
+// Contact Form (EmailJS)
+// =========================
+
 const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", function (e) {
+if (form) {
 
-    e.preventDefault();
+    form.addEventListener("submit", function (e) {
 
-    emailjs.sendForm(
-        "service_j72mpjw",
-        "template_ufgiru6",
-        this
-    )
-    .then(() => {
+        e.preventDefault();
 
-        alert("✅ Message sent successfully!");
-        form.reset();
+        const button = form.querySelector("button");
 
-    })
-  .catch((error) => {
+        if (button) {
 
-    console.log(error);
+            button.disabled = true;
+            button.innerHTML = "Sending...";
 
-    alert(
-        error.status +
-        "\n" +
-        error.text
-    );
+        }
 
-});
+        emailjs.sendForm(
+            "service_fejgvl3",
+            "template_ufgiru6",
+            form
+        )
 
-});
+        .then(() => {
 
-function openCertificate(image){
+            alert("✅ Message sent successfully!");
+
+            form.reset();
+
+            if (button) {
+
+                button.disabled = false;
+                button.innerHTML = `
+                    <i class="fas fa-paper-plane"></i>
+                    Send Message
+                `;
+
+            }
+
+        })
+
+        .catch((error) => {
+
+            console.error(error);
+
+            alert("❌ Failed to send message\n\n" + error.text);
+
+            if (button) {
+
+                button.disabled = false;
+                button.innerHTML = `
+                    <i class="fas fa-paper-plane"></i>
+                    Send Message
+                `;
+
+            }
+
+        });
+
+    });
+
+}
+
+// =========================
+// Certificate Modal
+// =========================
+
+function openCertificate(image) {
 
     document.getElementById("certificateImage").src = image;
     document.getElementById("certificateModal").style.display = "flex";
 
 }
 
-function closeCertificate(){
+function closeCertificate() {
 
     document.getElementById("certificateModal").style.display = "none";
 
 }
 
-window.onclick = function(event){
+window.addEventListener("click", function (event) {
 
     const modal = document.getElementById("certificateModal");
 
-    if(event.target === modal){
+    if (modal && event.target === modal) {
 
         closeCertificate();
 
     }
 
-}
+});
 
-const counters=document.querySelectorAll(".counter");
+// =========================
+// Counter Animation
+// =========================
 
-const speed=150;
+const counters = document.querySelectorAll(".counter");
+const speed = 150;
 
-counters.forEach(counter=>{
+counters.forEach(counter => {
 
-    const update=()=>{
+    const update = () => {
 
-        const target=+counter.dataset.target;
+        const target = +counter.dataset.target;
+        const count = +counter.innerText;
 
-        const count=+counter.innerText;
+        const increment = Math.ceil(target / speed);
 
-        const increment=Math.ceil(target/speed);
+        if (count < target) {
 
-        if(count<target){
+            counter.innerText = count + increment;
+            setTimeout(update, 15);
 
-            counter.innerText=count+increment;
+        } else {
 
-            setTimeout(update,15);
-
-        }else{
-
-            counter.innerText=target;
+            counter.innerText = target;
 
         }
 
@@ -196,12 +265,25 @@ counters.forEach(counter=>{
 
 });
 
+// =========================
+// Visitor Counter
+// =========================
 
-fetch("https://api.countapi.xyz/hit/karthek-portfolio/visits")
-.then(res=>res.json())
-.then(data=>{
+const visitor = document.getElementById("visitor-count");
 
-    document.getElementById("visitor-count").innerHTML=
-        data.value.toLocaleString();
+if (visitor) {
 
-});
+    fetch("https://api.countapi.xyz/hit/karthek-portfolio/visits")
+        .then(res => res.json())
+        .then(data => {
+
+            visitor.textContent = data.value.toLocaleString();
+
+        })
+        .catch(() => {
+
+            visitor.textContent = "0";
+
+        });
+
+}
